@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luizabeth Contreras — Presentación de Inglés & Condicionales</title>
+  
+  <!-- Tipografías de Google Fonts (Si no hay internet, usará fuentes del sistema) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- TAILWIND CSS LOCAL (Sin internet) -->
+  <script src="tailwind.min.js"></script>
+
+  <!-- LUCIDE ICONS LOCAL (Sin internet - Asegúrate de haberlo descargado) -->
+  <script src="lucide.min.js"></script>
+
+  <style>
+    :root {
+      --bg-cream: #F6F1EB;
+      --accent-orange: #FF5A1F;
+      --accent-gold: #D97706;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #F6F1EB 0%, #EFE6DC 50%, #F6F1EB 100%);
+      color: #1C1917;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-space { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .font-hand { font-family: 'Caveat', cursive; }
+
+    .got-title-glow {
+      text-shadow: 0 0 20px rgba(255, 90, 31, 0.7), 0 0 50px rgba(245, 158, 11, 0.5), 0 0 80px rgba(255, 90, 31, 0.3);
+    }
+    
+    .gold-glow {
+      text-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+    }
+
+    .got-name-entrance {
+      animation: gotNameReveal 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: center center;
+    }
+
+    @keyframes gotNameReveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.7) translateY(40px) rotateX(15deg);
+        filter: blur(12px) brightness(2);
+        letter-spacing: 0.3em;
+      }
+      50% {
+        filter: blur(2px) brightness(1.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotateX(0deg);
+        filter: blur(0) brightness(1);
+        letter-spacing: 0.05em;
+      }
+    }
+
+    .got-card-entrance {
+      animation: gotCardEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes gotCardEntrance {
+      0% {
+        opacity: 0;
+        transform: scale(0.88) translateY(35px) rotateY(-8deg);
+        filter: blur(8px) brightness(1.6);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotateY(0deg);
+        filter: blur(0) brightness(1);
+      }
+    }
+
+    .got-notice-entrance {
+      animation: gotNoticeEntrance 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes gotNoticeEntrance {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(40px);
+        filter: blur(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+    }
+
+    .glass-card-hover:hover {
+      border-color: rgba(255, 90, 31, 0.4);
+      box-shadow: 0 12px 35px -5px rgba(255, 90, 31, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .intro-step {
+      display: none;
+      opacity: 0;
+      transform: scale(0.96) translateY(15px);
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .intro-step.active {
+      display: flex;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .glow-orange-pulse {
+      animation: orangePulse 2.5s infinite;
+    }
+    @keyframes orangePulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.6); }
+      70% { box-shadow: 0 0 0 18px rgba(255, 90, 31, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 90, 31, 0); }
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-280px * 8)); }
+    }
+    .animate-scroll {
+      animation: scroll 25s linear infinite;
+    }
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    .float-anim {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F6F1EB; }
+    ::-webkit-scrollbar-thumb { background: #D6C8BD; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #FF5A1F; }
+
+    #ambient-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="selection:bg-orange-500 selection:text-white min-h-screen">
+
+  <!-- AUDIO DE INTRO -->
+  <audio id="intro-theme-audio" loop preload="auto" autoplay playsinline>
+    <source src="intro-audio.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ========================================================================= -->
+  <!-- 1. INTRO CINEMÁTICA -->
+  <!-- ========================================================================= -->
+  <section id="hero-screen" class="fixed inset-0 z-50 bg-[#0A0908] text-white flex flex-col justify-between p-4 sm:p-6 md:p-10 transition-all duration-1000 ease-out overflow-y-auto">
+    
+    <div class="absolute inset-0 z-0 bg-cover bg-center opacity-15 pointer-events-none mix-blend-luminosity filter brightness-75 contrast-125" 
+         style="background-image: url('Diseño de banderas.png');"></div>
+    <div class="absolute inset-0 z-1 bg-gradient-to-b from-[#0A0908]/90 via-[#0A0908]/75 to-[#0A0908]/95 pointer-events-none"></div>
+
+    <canvas id="ambient-canvas"></canvas>
+
+    <div class="relative z-10 flex items-center justify-between border-b border-stone-800/80 pb-3 text-xs font-mono tracking-widest text-stone-400">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></span>
+        <span class="text-orange-400 font-bold">EVALUACIÓN ACADÉMICA Nº 4</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>ENGLISH CONDITIONAL GRAMMAR</span>
+        <span class="hidden md:inline text-stone-700">|</span>
+        <span class="hidden md:inline text-stone-300">ESTUDIANTE: LUIZABETH CONTRERAS</span>
+      </div>
+    </div>
+
+    <div class="relative z-10 my-auto py-6 max-w-5xl mx-auto w-full text-center flex flex-col items-center justify-center min-h-[380px]">
+
+      <!-- PASO 1 -->
+      <div id="step-1" class="intro-step active flex-col items-center justify-center space-y-5 w-full">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/40 bg-orange-950/40 text-orange-400 text-xs font-mono uppercase tracking-widest shadow-md">
+          <i data-lucide="crown" class="w-4 h-4 text-amber-400"></i>
+          <span>República Bolivariana de Venezuela</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-cinzel font-black tracking-wider uppercase got-title-glow text-stone-100 leading-tight">
+          EVALUACIÓN DE INGLÉS<br><span class="text-orange-500">CONDICIONALES & MUNDO</span>
+        </h1>
+
+        <p class="font-space text-lg sm:text-2xl text-amber-200/90 tracking-wide font-medium">
+          4to Año de Bachillerato — Sección "B"
+        </p>
+
+        <div class="flex gap-2 pt-4 justify-center items-center">
+          <span class="w-8 h-2.5 rounded-full bg-orange-500 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+        </div>
+      </div>
+
+      <!-- PASO 2 -->
+      <div id="step-2" class="intro-step flex-col items-center justify-center space-y-5 w-full">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-950/40 text-amber-400 text-xs font-mono uppercase tracking-widest shadow-md">
+          <i data-lucide="sparkles" class="w-4 h-4 text-orange-400"></i>
+          <span>Presentación de la Estudiante</span>
+        </div>
+
+        <div class="got-name-entrance py-2">
+          <h2 class="text-5xl sm:text-7xl lg:text-8xl 2xl:text-9xl font-cinzel font-black tracking-wider uppercase got-title-glow text-stone-100 leading-tight">
+            LUIZABETH<br><span class="text-orange-500">CONTRERAS</span>
+          </h2>
+        </div>
+
+        <p class="font-space text-lg sm:text-xl text-stone-300 tracking-wider">
+          Creadora & Desarrolladora de la Plataforma
+        </p>
+
+        <div class="flex gap-2 pt-4 justify-center items-center">
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-8 h-2.5 rounded-full bg-orange-500 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+        </div>
+      </div>
+
+      <!-- PASO 3 -->
+      <div id="step-3" class="intro-step flex-col items-center justify-center space-y-6 w-full">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-stone-900 border border-stone-700 text-stone-300 text-xs font-mono uppercase shadow-lg">
+          <i data-lucide="user-check" class="w-4 h-4 text-orange-400"></i>
+          <span>Ficha de Identificación Académica</span>
+        </div>
+
+        <div class="got-card-entrance w-full max-w-2xl bg-stone-900/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border-2 border-orange-500/40 shadow-2xl space-y-4 text-left">
+          <div class="flex items-center justify-between border-b border-stone-800 pb-3">
+            <span class="text-xs font-mono text-orange-400 font-bold uppercase tracking-wider">DATOS PRINCIPALES</span>
+            <span class="text-xs font-mono bg-orange-500 text-white font-bold px-3 py-1 rounded-full">AÑO: 4º B</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono text-stone-200 pt-2">
+            <div class="bg-stone-950/80 p-3.5 rounded-xl border border-stone-800">
+              <span class="text-stone-500 block text-[11px] uppercase">Nombre del Estudiante:</span>
+              <strong class="text-amber-400 text-base font-space">Luizabeth Contreras</strong>
+            </div>
+            <div class="bg-stone-950/80 p-3.5 rounded-xl border border-stone-800">
+              <span class="text-stone-500 block text-[11px] uppercase">Materia / Asignatura:</span>
+              <strong class="text-stone-100 text-base font-space">Inglés / Oral Evaluation</strong>
+            </div>
+            <div class="bg-stone-950/80 p-3.5 rounded-xl border border-stone-800">
+              <span class="text-stone-500 block text-[11px] uppercase">Evaluación:</span>
+              <span class="text-stone-300 font-bold">Nº 4 — Conditional Sentences</span>
+            </div>
+            <div class="bg-stone-950/80 p-3.5 rounded-xl border border-stone-800">
+              <span class="text-stone-500 block text-[11px] uppercase">Proyecto Especial:</span>
+              <span class="text-orange-400 font-bold">Luizabeths Studios Core</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-2 justify-center items-center">
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-8 h-2.5 rounded-full bg-orange-500 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+        </div>
+      </div>
+
+      <!-- PASO 4 -->
+      <div id="step-4" class="intro-step flex-col items-center justify-center space-y-6 w-full">
+        
+        <div class="got-notice-entrance w-full max-w-2xl bg-gradient-to-br from-stone-900 via-[#181512] to-stone-900 p-6 sm:p-8 rounded-3xl border border-amber-500/50 shadow-2xl space-y-5 text-left">
+          
+          <div class="flex items-center gap-3 text-orange-400 border-b border-stone-800 pb-3">
+            <i data-lucide="languages" class="w-6 h-6 shrink-0 text-amber-400"></i>
+            <h3 class="font-space font-bold text-lg text-stone-100 uppercase tracking-wide">
+              Aviso Importante para la Clase y Evaluación:
+            </h3>
+          </div>
+
+          <div class="bg-stone-950/90 p-4 sm:p-5 rounded-2xl border border-stone-800 space-y-2">
+            <p class="text-stone-200 font-sans text-sm sm:text-base leading-relaxed">
+              <strong class="text-orange-400 font-semibold">Nota de Idioma:</strong> Toda la plataforma web y la lectura del contenido visual están redactadas <strong class="text-white underline decoration-orange-500/80">principalmente en Español</strong> para que la clase y los oyentes entiendan perfectamente la información.
+            </p>
+            <p class="text-stone-400 text-xs sm:text-sm font-sans pt-2 border-t border-stone-900">
+              🎙️ <em>Mientras Luizabeth habla en Inglés durante la defensa oral, en la pantalla tendrán la guía completa en español y pequeñas traducciones secundarias en inglés debajo de cada sección.</em>
+            </p>
+          </div>
+
+          <div class="pt-2 flex justify-center">
+            <button onclick="enterSite()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-space font-black tracking-wider shadow-2xl flex items-center justify-center gap-3 transform transition hover:scale-105 active:scale-95 cursor-pointer glow-orange-pulse border border-orange-400/40 text-sm sm:text-base">
+              <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+              <span>ENTRAR A LA WEB INTERACTIVA</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="flex gap-2 justify-center items-center">
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-stone-700 transition-all duration-500"></span>
+          <span class="w-8 h-2.5 rounded-full bg-orange-500 transition-all duration-500"></span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="relative z-10 flex items-center justify-between text-xs text-stone-500 font-mono border-t border-stone-900 pt-3">
+      <button onclick="toggleIntroAudio()" class="flex items-center gap-2 text-stone-400 hover:text-white transition cursor-pointer">
+        <i data-lucide="volume-2" id="intro-audio-icon" class="w-4 h-4 text-orange-400"></i>
+        <span id="intro-audio-label">Música GOT: Sonando</span>
+      </button>
+
+      <button onclick="enterSite()" class="text-xs text-orange-400 hover:text-orange-300 font-bold uppercase tracking-wider bg-stone-900 px-4 py-2 rounded-xl border border-stone-700 transition shadow-sm cursor-pointer">
+        Saltar Intro y Pasar a la Web ➔
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. NAVEGACIÓN SUPERIOR FLOTANTE -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-[#F6F1EB]/92 backdrop-blur-md border-b border-stone-300/80 px-4 sm:px-8 py-3.5 transition-all shadow-sm">
+    <div class="max-w-7xl 2xl:max-w-[1700px] mx-auto flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-stone-900 text-amber-400 flex items-center justify-center font-cinzel font-black text-xl shadow-lg border border-stone-700 hover:scale-105 transition-transform">
+          LC
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-space font-bold text-base text-stone-900">Luizabeth Contreras</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold border border-orange-200">4º B</span>
+          </div>
+          <p class="text-xs font-mono text-stone-500">Inglés • Condicionales & Presentación Oral</p>
+        </div>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-2 bg-stone-200/80 p-1.5 rounded-full border border-stone-300 text-xs font-space font-semibold text-stone-700">
+        <a href="#welcome-speech" class="px-4 py-2 rounded-full hover:bg-white hover:text-stone-900 transition shadow-xs">Apertura</a>
+        <a href="#languages-section" class="px-4 py-2 rounded-full hover:bg-white hover:text-stone-900 transition shadow-xs">Idiomas</a>
+        <a href="#series-section" class="px-4 py-2 rounded-full hover:bg-white hover:text-stone-900 transition shadow-xs">Series TV</a>
+        <a href="#hobbies-section" class="px-4 py-2 rounded-full hover:bg-white hover:text-stone-900 transition shadow-xs">Hobbies & Juegos</a>
+        <a href="#studios-section" class="px-4 py-2 rounded-full bg-orange-600 text-white font-bold shadow-md hover:bg-orange-500 transition">Luizabeths Studios</a>
+      </nav>
+
+      <button onclick="restartIntroSequence()" class="flex items-center gap-2 text-xs font-mono bg-white hover:bg-orange-50 text-stone-700 px-3.5 py-2 rounded-xl border border-stone-300 transition cursor-pointer shadow-xs hover:border-orange-300">
+        <i data-lucide="rotate-ccw" class="w-4 h-4 text-orange-500"></i>
+        <span class="hidden sm:inline">Ver Intro GOT</span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. CONTENIDO PRINCIPAL -->
+  <!-- ========================================================================= -->
+  <main id="main-content" class="opacity-0 transition-opacity duration-1000 max-w-7xl 2xl:max-w-[1700px] mx-auto px-4 sm:px-8 py-10 space-y-24">
+
+    <!-- SECCIÓN 1: SPEECH -->
+    <section id="welcome-speech" class="space-y-6 pt-4 reveal-on-scroll">
+      
+      <div class="flex items-center justify-between border-b border-stone-300/80 pb-3">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-500">
+          <span class="px-2.5 py-1 rounded bg-stone-900 text-white font-bold">01</span>
+          <span>SPEECH DE APERTURA // PALABRAS DE INICIO</span>
+        </div>
+        <span class="text-xs font-mono text-orange-600 font-semibold">Presentación Web Principal</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <div class="lg:col-span-8 glass-card rounded-3xl p-6 sm:p-10 space-y-6 relative overflow-hidden border border-stone-200 hover:shadow-lg transition-shadow duration-300">
+          
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 border border-orange-200 text-orange-800 text-xs font-mono font-bold">
+              <i data-lucide="mic" class="w-3.5 h-3.5 text-orange-600"></i>
+              <span>Discurso de Apertura (Speech)</span>
+            </span>
+            <span class="text-xs font-mono text-stone-500">Evaluación Nº 4</span>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-3xl sm:text-5xl font-space font-extrabold text-stone-900 leading-tight">
+              ¡Buenos días a todos y <br>
+              <span class="text-orange-600 font-cinzel">profesor(a)!</span>
+            </h2>
+
+            <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200 space-y-3">
+              <span class="text-xs font-mono text-orange-600 font-bold uppercase tracking-wider block">
+                🇪🇸 Guía Principal en Español:
+              </span>
+              <p class="text-stone-800 text-base sm:text-lg leading-relaxed font-sans">
+                "¡Buenos días a todos! ¡Buenos días, profesor(a)! ¿Cómo están todos hoy? Yo estoy genial y muy emocionada de estar aquí."
+              </p>
+              <p class="text-stone-700 text-base sm:text-lg leading-relaxed font-sans border-t border-stone-200 pt-3">
+                "Hoy, en lugar de usar una presentación estándar de PowerPoint o Canva, <strong class="text-orange-600 underline decoration-orange-500/60">construí mi presentación como un sitio web interactivo</strong>. Voy a compartir un pedacito de mi mundo con todos ustedes: desde las historias que me inspiran hasta el proyecto tecnológico de mis sueños que estoy construyendo."
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-stone-100 p-4 rounded-xl border border-stone-200 space-y-1 text-xs sm:text-sm font-mono text-stone-600">
+            <span class="text-stone-500 uppercase font-bold text-[11px] block">🇬🇧 Text in English (Oral Speech):</span>
+            <p>"Good morning, everyone! Good morning, teacher! I built my presentation as an interactive website to share a piece of my world with all of you."</p>
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center justify-between gap-4">
+            <button onclick="speakSpeechIntro()" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-mono font-bold transition-all cursor-pointer shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+              <span>Escuchar Audio del Speech en Inglés</span>
+            </button>
+            <span class="text-xs font-mono text-stone-500">Desliza hacia abajo para ver las secciones ↓</span>
+          </div>
+
+        </div>
+
+        <!-- FICHA ACADÉMICA -->
+        <div class="lg:col-span-4 bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 flex flex-col justify-between space-y-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+              <span class="text-xs font-mono text-orange-600 font-bold uppercase">FICHA ACADÉMICA</span>
+              <span class="text-xs font-mono bg-orange-100 text-orange-800 border border-orange-200 px-2.5 py-0.5 rounded font-bold">4TO "B"</span>
+            </div>
+
+            <div>
+              <p class="text-xs font-mono text-stone-500 uppercase">Estudiante</p>
+              <h3 class="text-2xl font-space font-bold text-stone-900">Luizabeth Contreras</h3>
+            </div>
+
+            <div class="space-y-3 pt-2">
+              <div class="bg-stone-50 p-3.5 rounded-xl border border-stone-200 hover:border-orange-200 transition-colors">
+                <span class="text-[11px] font-mono text-stone-500 block">TEMA PRINCIPAL</span>
+                <span class="text-sm font-bold text-stone-800">Condicionales en Inglés (Zero, 1st, 2nd, 3rd)</span>
+              </div>
+              <div class="bg-orange-50 p-3.5 rounded-xl border border-orange-200 space-y-2 hover:border-orange-300 transition-colors">
+                <span class="text-[11px] font-mono text-stone-500 block">PROYECTO TECNOLÓGICO</span>
+                <span class="text-sm font-bold text-orange-600 block mb-1">Luizabeths Studios</span>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="text-[10px] bg-white border border-orange-200 text-orange-700 px-2 py-0.5 rounded-md font-mono shadow-xs">Series</span>
+                  <span class="text-[10px] bg-white border border-orange-200 text-orange-700 px-2 py-0.5 rounded-md font-mono shadow-xs">Videojuegos</span>
+                  <span class="text-[10px] bg-white border border-orange-200 text-orange-700 px-2 py-0.5 rounded-md font-mono shadow-xs">Idiomas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-orange-50 p-4 rounded-xl border border-orange-200 space-y-2 text-xs font-mono text-stone-700">
+            <span class="text-stone-800 font-bold block">Estructuras Aplicadas:</span>
+            <p>• Zero Conditional (Hábitos)</p>
+            <p>• First Conditional (Gustos)</p>
+            <p>• Second Conditional (Juegos)</p>
+            <p>• Third Conditional (Estudios)</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SECCIÓN 2: IDIOMAS -->
+    <section id="languages-section" class="space-y-8 pt-6 reveal-on-scroll">
+      
+      <div class="border-b border-stone-300/80 pb-4">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-500 mb-1">
+          <span class="px-2 py-0.5 rounded bg-orange-600 text-white font-bold">02</span>
+          <span>HABILIDAD MULTILINGÜE // LANGUAGES</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-space font-extrabold text-stone-900">
+          Conectando Mundos a través de los <span class="text-orange-600">Idiomas</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 glass-card p-6 sm:p-8 rounded-3xl border border-stone-200 space-y-4 hover:shadow-lg transition-shadow duration-300">
+          <span class="text-xs font-mono font-bold text-orange-600 uppercase">Explicación en Español (Principal):</span>
+          <p class="text-base sm:text-lg font-sans text-stone-800 leading-relaxed">
+            "Antes de sumergirme en mis pasiones, quiero hablar sobre los idiomas. No hablo solo un idioma; de hecho, me encanta practicar diferentes. Déjenme darles una pequeña demostración: Alemán, Italiano y Ruso. Todavía no tengo fluidez completa en todos ellos, pero si alguien me habla en estos idiomas, puedo entender la idea principal y mantener una conversación básica."
+          </p>
+          
+          <div class="p-3.5 bg-stone-100 rounded-xl border border-stone-200 text-xs font-mono text-stone-600">
+            🇬🇧 <em>English Script: "Before diving into my passions, I want to talk about languages. I love practicing German, Italian, and Russian."</em>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-4 rounded-3xl border border-stone-200 text-center space-y-3 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="rounded-2xl overflow-hidden border border-stone-200 shadow-sm bg-stone-100 p-2 group">
+            <img src="Diseño de banderas.png" 
+                 alt="Diseño de Banderas - Idiomas de Luizabeth" 
+                 class="w-full h-auto object-contain max-h-64 rounded-xl group-hover:scale-[1.02] transition-transform duration-500">
+          </div>
+          <span class="text-xs font-mono text-stone-500 block">Muestra Visual de Banderas & Colección Cultural</span>
+        </div>
+
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="glass-card glass-card-hover p-6 rounded-3xl border border-stone-200 space-y-4 transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <h4 class="font-space font-bold text-lg text-stone-900">Alemán (Deutsch)</h4>
+            <button onclick="speakGerman()" class="w-9 h-9 rounded-full bg-orange-600 hover:bg-orange-500 text-white flex items-center justify-center transition-all cursor-pointer shadow-md hover:scale-110">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="bg-stone-50 p-4 rounded-2xl border border-stone-200 space-y-2">
+            <p class="font-space font-bold text-lg text-orange-600">"Hallo, ich heiße Luizabeth."</p>
+            <p class="text-xs font-mono text-stone-600 border-t border-stone-200 pt-2">🇪🇸 Español: <em>"Hola, me llamo Luizabeth."</em></p>
+          </div>
+        </div>
+
+        <div class="glass-card glass-card-hover p-6 rounded-3xl border border-stone-200 space-y-4 transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <h4 class="font-space font-bold text-lg text-stone-900">Italiano (Italiano)</h4>
+            <button onclick="speakItalian()" class="w-9 h-9 rounded-full bg-orange-600 hover:bg-orange-500 text-white flex items-center justify-center transition-all cursor-pointer shadow-md hover:scale-110">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="bg-stone-50 p-4 rounded-2xl border border-stone-200 space-y-2">
+            <p class="font-space font-bold text-lg text-orange-600">"Ciao, mi chiamo Luizabeth."</p>
+            <p class="text-xs font-mono text-stone-600 border-t border-stone-200 pt-2">🇪🇸 Español: <em>"Hola, me llamo Luizabeth."</em></p>
+          </div>
+        </div>
+
+        <div class="glass-card glass-card-hover p-6 rounded-3xl border border-stone-200 space-y-4 transition-all duration-300">
+          <div class="flex items-center justify-between">
+            <h4 class="font-space font-bold text-lg text-stone-900">Ruso (Русский)</h4>
+            <button onclick="speakRussian()" class="w-9 h-9 rounded-full bg-orange-600 hover:bg-orange-500 text-white flex items-center justify-center transition-all cursor-pointer shadow-md hover:scale-110">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="bg-stone-50 p-4 rounded-2xl border border-stone-200 space-y-2">
+            <p class="font-space font-bold text-base text-orange-600">"Здравствуйте, меня зовут Луизабет."</p>
+            <p class="text-xs font-mono text-stone-600 border-t border-stone-200 pt-2">🇪🇸 Español: <em>"Hola, me llamo Luizabeth."</em></p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SECCIÓN 3: SERIES -->
+    <section id="series-section" class="space-y-8 pt-6 reveal-on-scroll">
+      
+      <div class="border-b border-stone-300/80 pb-4">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-500 mb-1">
+          <span class="px-2 py-0.5 rounded bg-orange-600 text-white font-bold">03</span>
+          <span>SERIES DE TV Y REGLA DE NARRATIVA // SHOWS & CONDITIONALS</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-space font-extrabold text-stone-900">
+          Historias Favoritas & <span class="text-orange-600">Zero / First Conditional</span>
+        </h2>
+      </div>
+
+      <div class="bg-gradient-to-r from-orange-50 via-white to-amber-50 rounded-3xl p-6 sm:p-8 border border-orange-300/60 space-y-4 shadow-md">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-600 text-white text-xs font-mono font-bold uppercase">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+          <span>Zero Conditional — Regla General / Hecho Real</span>
+        </div>
+
+        <blockquote class="text-xl sm:text-3xl font-space font-bold text-stone-900 leading-snug">
+          "Si tengo tiempo libre, siempre veo series; eso es simplemente un hecho."
+        </blockquote>
+
+        <p class="text-xs sm:text-sm font-mono text-stone-600 border-t border-orange-200 pt-2">
+          🇬🇧 <em>English: "If I have free time, I always watch series—that's just a fact." (Structure: If + Present Simple, + Present Simple)</em>
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <h3 class="text-xl font-space font-bold text-stone-900 flex items-center gap-2">
+          <i data-lucide="trophy" class="w-5 h-5 text-orange-600"></i>
+          <span>Las 3 Series Favoritas (Con Imagen Completa y Video Demostrativo):</span>
+        </h3>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- TARJETA 1: GAME OF THRONES -->
+          <div class="glass-card rounded-3xl p-6 border border-stone-200 flex flex-col justify-between space-y-5 relative overflow-hidden group hover:border-orange-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-orange-100 text-orange-800 border border-orange-200">TOP 1</span>
+                <span class="text-xs font-cinzel font-bold text-stone-500">Fantasía Épica</span>
+              </div>
+              
+              <h4 class="text-2xl font-cinzel font-black text-stone-900">Game of Thrones</h4>
+
+              <div class="rounded-2xl overflow-hidden shadow-md w-full aspect-[2/3] relative">
+                <img src="If You're Just Getting Into Fantasy Books, Please Avoid These 10 Series.jpg" 
+                     alt="Game of Thrones Poster" 
+                     class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-2 text-xs sm:text-sm">
+                <p class="text-stone-800 font-sans">
+                  "En primer lugar, <strong>Game of Thrones</strong>, porque me encanta su universo masivo, que continúa expandiéndose con <em>House of the Dragon</em> y <em>A Knight of the Seven Kingdoms</em>."
+                </p>
+                <p class="text-stone-500 font-mono text-[11px] pt-1 border-t border-stone-200">
+                  🇬🇧 <em>First, Game of Thrones, because I absolutely love its massive universe.</em>
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-black/90 p-2 rounded-2xl border border-stone-800 space-y-2 relative group/vid shadow-inner">
+              <div class="flex items-center justify-between text-xs font-mono text-orange-400 font-bold px-2 pt-1">
+                <span>🎬 Video Demo (Hover)</span>
+              </div>
+              <video class="w-full max-h-[220px] object-contain rounded-xl cursor-pointer" onmouseover="this.play()" onmouseout="this.pause()" loop playsinline controls>
+                <source src="It_sfantasies_video_no_watermark.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+              </video>
+            </div>
+          </div>
+
+          <!-- TARJETA 2: HANNIBAL -->
+          <div class="glass-card rounded-3xl p-6 border border-stone-200 flex flex-col justify-between space-y-5 relative overflow-hidden group hover:border-red-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-red-100 text-red-800 border border-red-200">TOP 2</span>
+                <span class="text-xs font-mono text-stone-500">Thriller Psicológico</span>
+              </div>
+              
+              <h4 class="text-2xl font-space font-black text-stone-900 uppercase tracking-tight">HANNIBAL</h4>
+
+              <div class="rounded-2xl overflow-hidden shadow-md w-full aspect-[2/3] relative">
+                <img src="445504588115485938.jpg" 
+                     alt="Hannibal Poster" 
+                     class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-2 text-xs sm:text-sm">
+                <p class="text-stone-800 font-sans">
+                  "En segundo lugar, <strong>Hannibal</strong>, una obra maestra del thriller psicológico. Disfruto su atmósfera oscura, el intelecto de Hannibal Lecter y su tensión con Will Graham."
+                </p>
+                <p class="text-stone-500 font-mono text-[11px] pt-1 border-t border-stone-200">
+                  🇬🇧 <em>Second, Hannibal, which is a masterpiece of psychological thrillers.</em>
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-black/90 p-2 rounded-2xl border border-stone-800 space-y-2 relative group/vid shadow-inner">
+              <div class="flex items-center justify-between text-xs font-mono text-red-400 font-bold px-2 pt-1">
+                <span>🎬 Video Demo (Hover)</span>
+              </div>
+              <video class="w-full max-h-[220px] object-contain rounded-xl cursor-pointer" onmouseover="this.play()" onmouseout="this.pause()" loop playsinline controls>
+                <source src="Voss_video_no_watermark.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+              </video>
+            </div>
+          </div>
+
+          <!-- TARJETA 3: PERCY JACKSON -->
+          <div class="glass-card rounded-3xl p-6 border border-stone-200 flex flex-col justify-between space-y-5 relative overflow-hidden group hover:border-blue-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-2.5 py-1 rounded bg-blue-100 text-blue-800 border border-blue-200">TOP 3</span>
+                <span class="text-xs font-mono text-stone-500">Mitología Moderna</span>
+              </div>
+              
+              <h4 class="text-2xl font-space font-black text-stone-900">Percy Jackson</h4>
+
+              <div class="rounded-2xl overflow-hidden shadow-md w-full aspect-[2/3] relative">
+                <img src="Disney+ made a splash at the San Diego Comic-Con….jpg" 
+                     alt="Percy Jackson Poster" 
+                     class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-2 text-xs sm:text-sm">
+                <p class="text-stone-800 font-sans">
+                  "Y en tercer lugar, <strong>Percy Jackson</strong>, una brillante historia de fantasía basada en la mitología griega moderna y héroes jóvenes."
+                </p>
+                <p class="text-stone-500 font-mono text-[11px] pt-1 border-t border-stone-200">
+                  🇬🇧 <em>And third, Percy Jackson, a brilliant story based on modern mythology.</em>
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-black/90 p-2 rounded-2xl border border-stone-800 space-y-2 relative group/vid shadow-inner">
+              <div class="flex items-center justify-between text-xs font-mono text-blue-400 font-bold px-2 pt-1">
+                <span>🎬 Video Demo (Hover)</span>
+              </div>
+              <video class="w-full max-h-[220px] object-contain rounded-xl cursor-pointer" onmouseover="this.play()" onmouseout="this.pause()" loop playsinline controls>
+                <source src="Percy_Jackson_video_no_watermark.mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+              </video>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 p-6 rounded-3xl border border-amber-300/60 space-y-2 shadow-sm hover:shadow-md transition-shadow">
+        <span class="text-xs font-mono font-bold text-orange-700 uppercase">First Conditional (Situación Real o Posible):</span>
+        <p class="text-xl sm:text-2xl font-space font-bold text-stone-900">
+          "Si ves estas tres series, entenderás mi gusto en la narrativa."
+        </p>
+        <p class="text-xs font-mono text-stone-600">
+          🇬🇧 <em>"If you watch these three shows, you will understand my taste in storytelling."</em>
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- SECCIÓN 4: HOBBIES Y VIDEOJUEGOS -->
+    <section id="hobbies-section" class="space-y-10 pt-6 reveal-on-scroll">
+      
+      <div class="border-b border-stone-300/80 pb-4">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-500 mb-1">
+          <span class="px-2 py-0.5 rounded bg-orange-600 text-white font-bold">04</span>
+          <span>HOBBIES DESTACADOS & VIDEOJUEGOS // SECOND CONDITIONAL</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-space font-extrabold text-stone-900">
+          Pasiones, Creación & <span class="text-orange-600">Gaming Routine</span>
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-space font-bold text-orange-600 flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+          <span>Resumen de Hobbies de Luizabeth (Vista Ampliada):</span>
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          
+          <div class="glass-card p-6 rounded-3xl border border-stone-200 flex flex-col items-center text-center space-y-3 hover:border-orange-400 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 rounded-2xl bg-orange-100 text-orange-600 border border-orange-200 flex items-center justify-center text-3xl shadow-sm">
+              🍳
+            </div>
+            <h4 class="font-space font-bold text-xl text-stone-900">Cocinar</h4>
+            <span class="text-xs font-mono text-orange-600 font-semibold">COOKING</span>
+            <p class="text-xs text-stone-600 font-sans">Creación culinaria y exploración de nuevos sabores.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl border border-stone-200 flex flex-col items-center text-center space-y-3 hover:border-blue-400 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 border border-blue-200 flex items-center justify-center text-3xl shadow-sm">
+              📖
+            </div>
+            <h4 class="font-space font-bold text-xl text-stone-900">Lectura</h4>
+            <span class="text-xs font-mono text-blue-600 font-semibold">READING</span>
+            <p class="text-xs text-stone-600 font-sans">Historias de fantasía, mitología e investigación.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl border border-stone-200 flex flex-col items-center text-center space-y-3 hover:border-amber-400 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 border border-amber-200 flex items-center justify-center text-3xl shadow-sm">
+              🎨
+            </div>
+            <h4 class="font-space font-bold text-xl text-stone-900">Crear</h4>
+            <span class="text-xs font-mono text-amber-600 font-semibold">CREATING</span>
+            <p class="text-xs text-stone-600 font-sans">Diseño de proyectos y desarrollo de conceptos.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl border border-stone-200 flex flex-col items-center text-center space-y-3 hover:border-emerald-400 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 border border-emerald-200 flex items-center justify-center text-3xl shadow-sm">
+              💻
+            </div>
+            <h4 class="font-space font-bold text-xl text-stone-900">Programar</h4>
+            <span class="text-xs font-mono text-emerald-600 font-semibold">PROGRAMMING</span>
+            <p class="text-xs text-stone-600 font-sans">Código, software y desarrollo web avanzado.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl border border-stone-200 flex flex-col items-center text-center space-y-3 hover:border-purple-400 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="w-16 h-16 rounded-2xl bg-purple-100 text-purple-600 border border-purple-200 flex items-center justify-center text-3xl shadow-sm">
+              🎮
+            </div>
+            <h4 class="font-space font-bold text-xl text-stone-900">Juegos</h4>
+            <span class="text-xs font-mono text-purple-600 font-semibold">GAMING</span>
+            <p class="text-xs text-stone-600 font-sans">Mundos abiertos, FPS y estrategia táctica.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="glass-card p-8 rounded-3xl border border-stone-200 space-y-4 hover:shadow-lg transition-shadow duration-300">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-mono font-bold uppercase">
+          <i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i>
+          <span>Second Conditional — Hipotético / Irreal</span>
+        </div>
+
+        <blockquote class="text-2xl sm:text-3xl font-space font-extrabold text-stone-900">
+          "Si tuviera más horas libres cada día, jugaría videojuegos sin parar."
+        </blockquote>
+
+        <p class="text-xs sm:text-sm font-mono text-stone-600 border-t border-stone-200 pt-2">
+          🇬🇧 <em>"If I had more free hours every day, I would play video games non-stop." (Structure: If + Past Simple, would + Verb)</em>
+        </p>
+      </div>
+
+      <!-- LISTA DE JUEGOS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 shadow-xs hover:border-orange-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-orange-600 font-bold block">FPS // COMBATE TÁCTICO</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Call of Duty: MW4</h4>
+          <p class="text-xs text-stone-600">Combate rápido, estrategia en equipo y acción táctica.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 shadow-xs hover:border-amber-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-amber-600 font-bold block">MUNDO ABIERTO</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Red Dead Redemption</h4>
+          <p class="text-xs text-stone-600">Narrativa cinematográfica en el viejo oeste e inmersión.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 shadow-xs hover:border-blue-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-blue-600 font-bold block">TECNOLOGÍA // HACKING</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Watch Dogs</h4>
+          <p class="text-xs text-stone-600">Manipulación de redes urbanas y rebelión digital.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 shadow-xs hover:border-emerald-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-emerald-600 font-bold block">SUPERVIVENCIA</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Far Cry Primal</h4>
+          <p class="text-xs text-stone-600">Edad de Piedra, caza de bestias y supervivencia salvaje.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 shadow-xs hover:border-purple-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-purple-600 font-bold block">TERROR ESPACIAL</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Dead Space</h4>
+          <p class="text-xs text-stone-600">Aislamiento en el espacio profundo y ciencia ficción.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 shadow-xs hover:border-red-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-red-600 font-bold block">HERO SHOOTER</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Marvel Rivals</h4>
+          <p class="text-xs text-stone-600">Combate dinámico en equipo con superhéroes.</p>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-2 sm:col-span-2 shadow-xs hover:border-amber-400 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+          <span class="text-xs font-mono text-amber-600 font-bold block">RETROFUTURISMO Y YERMO</span>
+          <h4 class="font-space font-bold text-lg text-stone-900">Fallout</h4>
+          <p class="text-xs text-stone-600">Exploración post-apocalíptica y construcción de mundos retrofuturistas.</p>
+        </div>
+
+      </div>
+
+   <!-- VIDEO DEMOSTRATIVO LOCAL -->
+<div class="space-y-4 pt-6">
+  <h4 class="font-space font-bold text-stone-900 text-lg flex items-center gap-2">
+    <i data-lucide="video" class="w-5 h-5 text-orange-600"></i>
+    <span>Video Demostrativo (Calidad Full HD):</span>
+  </h4>
+  
+  <div class="w-full max-w-5xl mx-auto aspect-video bg-black/90 rounded-3xl overflow-hidden shadow-xl border border-stone-300 relative group">
+    <video class="w-full h-full object-contain" controls playsinline preload="metadata">
+      <source src="call.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </div>
+</div>
+
+      <!-- GALERÍA DE VIDEOJUEGOS (CARRUSEL + GRID) -->
+      <div class="space-y-6 pt-6">
+        <h4 class="font-space font-bold text-stone-900 text-lg flex items-center gap-2">
+          <i data-lucide="image" class="w-5 h-5 text-orange-600"></i>
+          <span>Galería de Videojuegos Favoritos:</span>
+        </h4>
+        
+        <!-- CARRUSEL INFINITO CON LOS NUEVOS NOMBRES -->
+        <div class="carousel-container relative w-full overflow-hidden rounded-3xl bg-stone-900 p-6 shadow-2xl border border-stone-800">
+          <div class="carousel-track flex gap-6 w-max animate-scroll items-center">
+            <!-- Imágenes del archivo de texto -->
+            <img src="『CoD_MW4』北朝鮮プロパガンダ風の新映像「희생（犠牲）」公開__『CoD_MW4』の新映像「희생（犠牲）」が公開。北朝鮮のプロパガンダ・ポスターを模した作りで、「繁栄」「忠誠」「.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="EA_ No Dead Space 4 Expected in 2025 – Research_.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="wonderful games！.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="356065914300955363.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="The Outlast Trials — дата выхода, системные требования, сюжет факты.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="Copia de detroit become human.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="643170390577472141.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="767160117815760240.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="De lujo!!.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="Resident Evil 4 Remake_ List of Non-Glitch Skips_.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            
+            <!-- DUPLICADOS PARA EL BUCLE INFINITO -->
+            <img src="『CoD_MW4』北朝鮮プロパガンダ風の新映像「희생（犠牲）」公開__『CoD_MW4』の新映像「희생（犠牲）」が公開。北朝鮮のプロパガンダ・ポスターを模した作りで、「繁栄」「忠誠」「.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="EA_ No Dead Space 4 Expected in 2025 – Research_.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="wonderful games！.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="356065914300955363.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="The Outlast Trials — дата выхода, системные требования, сюжет факты.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="Copia de detroit become human.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="643170390577472141.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="767160117815760240.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="De lujo!!.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+            <img src="Resident Evil 4 Remake_ List of Non-Glitch Skips_.jpg" alt="Game" class="w-64 h-40 object-cover rounded-xl shadow-lg border border-stone-700 transition-all duration-300 hover:scale-125 hover:z-10 hover:border-orange-500 cursor-pointer">
+          </div>
+        </div>
+
+       
+
+    <!-- SECCIÓN 5: LUIZABETHS STUDIOS -->
+    <section id="studios-section" class="space-y-8 pt-6 reveal-on-scroll">
+      
+      <div class="border-b border-stone-300/80 pb-4">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-500 mb-1">
+          <span class="px-2 py-0.5 rounded bg-orange-600 text-white font-bold">05</span>
+          <span>LA GRAN VISIÓN // LUIZABETHS STUDIOS</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-space font-extrabold text-stone-900">
+          Construyendo el Futuro: <span class="text-orange-600">Luizabeths Studios</span>
+        </h2>
+      </div>
+
+      <div class="bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 p-8 sm:p-10 rounded-3xl border border-orange-300/60 space-y-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-mono font-bold uppercase">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+          <span>Third Conditional — Condición Pasada Imaginaria y Resultado</span>
+        </div>
+
+        <h3 class="text-2xl sm:text-4xl font-space font-extrabold text-stone-900 leading-tight">
+          "Si no hubiera aprendido a programar, nunca habría creado mi propio proyecto: <span class="text-orange-600 underline underline-offset-4 decoration-orange-500">Luizabeths Studios</span>."
+        </h3>
+
+        <div class="bg-white/80 p-4 rounded-xl border border-orange-200 text-xs font-mono text-stone-700 space-y-1">
+          <p>🇬🇧 <strong class="text-stone-900">English Structure:</strong> <em>"If I hadn't learned how to code, I would never have created my own project: Luizabeths Studios."</em></p>
+          <p class="text-stone-500">Forma: <em>If + Past Perfect (had + V3), would have + Past Participle (V3)</em></p>
+        </div>
+
+        <p class="text-base sm:text-lg font-sans text-stone-800 leading-relaxed">
+          "Mi sueño es convertir a <strong class="text-orange-600">Luizabeths Studios</strong> en una gran empresa tecnológica junto a compañías gigantes como Google, Apple o NVIDIA."
+        </p>
+      </div>
+
+      <!-- TERMINAL INTERACTIVA -->
+      <div class="glass-card p-6 sm:p-8 rounded-3xl border border-stone-200 space-y-4 shadow-md hover:shadow-lg transition-shadow duration-300">
+        
+        <div class="flex items-center justify-between border-b border-stone-200 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            <span class="text-xs font-mono text-stone-500 ml-2">luizabeths-studios-core v1.0.4</span>
+          </div>
+          <span class="text-[10px] font-mono bg-orange-100 text-orange-700 px-2.5 py-0.5 rounded border border-orange-200 font-bold">TERMINAL INTERACTIVA</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+          <span class="text-stone-600">Comandos Rápidos:</span>
+          <button onclick="runCommand('status')" class="px-3 py-1 rounded-lg bg-white hover:bg-orange-600 hover:text-white text-stone-700 transition-all cursor-pointer border border-stone-300 shadow-xs">status</button>
+          <button onclick="runCommand('mission')" class="px-3 py-1 rounded-lg bg-white hover:bg-orange-600 hover:text-white text-stone-700 transition-all cursor-pointer border border-stone-300 shadow-xs">mission</button>
+          <button onclick="runCommand('tech-stack')" class="px-3 py-1 rounded-lg bg-white hover:bg-orange-600 hover:text-white text-stone-700 transition-all cursor-pointer border border-stone-300 shadow-xs">tech-stack</button>
+          <button onclick="runCommand('vision-2030')" class="px-3 py-1 rounded-lg bg-white hover:bg-orange-600 hover:text-white text-stone-700 transition-all cursor-pointer border border-stone-300 shadow-xs">vision-2030</button>
+          <button onclick="runCommand('clear')" class="px-3 py-1 rounded-lg bg-white hover:bg-red-600 hover:text-white text-stone-500 transition-all cursor-pointer border border-stone-300 shadow-xs">clear</button>
+        </div>
+
+        <div id="terminal-screen" class="bg-stone-50 p-5 rounded-2xl font-mono text-xs text-stone-700 min-h-[220px] max-h-[300px] overflow-y-auto space-y-2 border border-stone-300 leading-relaxed shadow-inner">
+          <div class="text-orange-600">
+            =====================================================================<br>
+            * LUIZABETHS STUDIOS // CORE TERMINAL DE PROYECTO FUTURO<br>
+            =====================================================================
+          </div>
+          <div class="text-stone-500">
+            Haz clic en un botón superior o escribe un comando abajo para interactuar.<br>
+            Comandos disponibles: <span class="text-orange-600 font-bold">status</span>, <span class="text-orange-600 font-bold">mission</span>, <span class="text-orange-600 font-bold">tech-stack</span>.
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-stone-100 px-4 py-3 rounded-xl border border-stone-300 font-mono text-xs shadow-xs focus-within:ring-2 focus-within:ring-orange-500 focus-within:border-transparent transition-all">
+          <span class="text-orange-600 font-bold">luizabeth@studios:~$</span>
+          <input type="text" id="term-input" placeholder="Escribe un comando y presiona Enter..." class="bg-transparent text-stone-900 focus:outline-none flex-1 font-mono placeholder-stone-400">
+          <button onclick="submitTermInput()" class="px-4 py-1.5 bg-orange-600 hover:bg-orange-500 text-white rounded-lg font-mono text-xs font-bold transition-all cursor-pointer shadow-md">
+            Ejecutar
+          </button>
+        </div>
+
+      </div>
+
+      <!-- TARJETA FINAL CON MEME.GIF (TAMAÑO ORIGINAL) -->
+      <div class="text-center p-8 sm:p-12 glass-card rounded-3xl border border-stone-200 space-y-6 shadow-xl flex flex-col items-center">
+        <h4 class="text-3xl sm:text-5xl font-cinzel font-black text-stone-900">
+          ¡Muchas gracias por su atención!
+        </h4>
+        <p class="text-base sm:text-lg font-sans text-stone-700 max-w-2xl mx-auto">
+          "Thank you very much for your time and attention! Espero que hayan disfrutado esta presentación interactiva tanto como yo disfruté programándola."
+        </p>
+        
+        <!-- STICKER MEME.GIF EN SU TARJETA DE CRISTAL PEQUEÑA -->
+        <div class="py-4">
+          <div class="p-3 bg-white/60 backdrop-blur-lg rounded-2xl border border-stone-200 shadow-xl inline-block transform hover:scale-105 transition duration-300 float-anim">
+            <img src="meme.gif" alt="Sticker de Agradecimiento" class="max-w-[200px] sm:max-w-[250px] rounded-xl">
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <button onclick="restartIntroSequence()" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-orange-600 hover:bg-orange-500 text-white text-sm font-mono font-bold transition-all shadow-lg hover:shadow-orange-500/40 hover:-translate-y-1 cursor-pointer">
+            <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+            <span>Volver a Ver Intro Got</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="border-t border-stone-300 bg-stone-200/70 py-8 px-4 sm:px-8 mt-20 text-xs font-mono text-stone-600">
+    <div class="max-w-7xl 2xl:max-w-[1700px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <strong class="text-stone-900">Luizabeth Contreras</strong> — 4to Año Sección "B"
+        <span class="text-stone-500 block">Evaluación Nº 4: Presentación Oral de Inglés y Condicionales</span>
+      </div>
+      <div class="text-right">
+        <span>Diseñado para Pantallas Grandes / TV / 4K</span>
+        <span class="text-orange-600 block font-bold">Luizabeths Studios © 2026</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================================================= -->
+  <!-- LÓGICA DE SCRIPT JS -->
+  <!-- ========================================================================= -->
+  <script>
+    let introTimers = [];
+    const stepDuration = 6000;
+    let hasEnteredWeb = false;   
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Chequeo de seguridad para lucide si no carga offline
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+      initScrollReveal();
+      initAmbientParticles();
+      startIntroSequence();
+
+      tryPlayIntroAudio();
+
+      ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'].forEach(evt => {
+        document.addEventListener(evt, tryPlayIntroAudio, { once: true, passive: true });
+      });
+
+      window.addEventListener('load', tryPlayIntroAudio);
+    });
+
+    function tryPlayIntroAudio() {
+      const audio = document.getElementById('intro-theme-audio');
+      const label = document.getElementById('intro-audio-label');
+      if (!audio) return;
+      if (hasEnteredWeb) return;   
+      if (!audio.paused) return;
+
+      audio.volume = 0.55;
+      const playPromise = audio.play();
+      if (playPromise && playPromise.then) {
+        playPromise.then(() => {
+          if (label) label.innerText = 'Música GOT: Sonando';
+        }).catch(() => {
+          if (label) label.innerText = 'Clic para iniciar música';
+        });
+      }
+    }
+
+    function startIntroSequence() {
+      introTimers.forEach(t => clearTimeout(t));
+      introTimers = [];
+
+      const step1 = document.getElementById('step-1');
+      const step2 = document.getElementById('step-2');
+      const step3 = document.getElementById('step-3');
+      const step4 = document.getElementById('step-4');
+      const audio = document.getElementById('intro-theme-audio');
+
+      if (audio) {
+        audio.currentTime = 0;
+        audio.volume = 0.55;
+        audio.play().catch(() => {});
+      }
+
+      step1.classList.add('active');
+      step2.classList.remove('active');
+      step3.classList.remove('active');
+      step4.classList.remove('active');
+
+      introTimers.push(setTimeout(() => {
+        step1.classList.remove('active');
+        step2.classList.add('active');
+      }, stepDuration));
+
+      introTimers.push(setTimeout(() => {
+        step2.classList.remove('active');
+        step3.classList.add('active');
+      }, stepDuration * 2));
+
+      introTimers.push(setTimeout(() => {
+        step3.classList.remove('active');
+        step4.classList.add('active');
+      }, stepDuration * 3));
+    }
+
+    function enterSite() {
+      hasEnteredWeb = true; 
+      introTimers.forEach(t => clearTimeout(t));
+      introTimers = [];
+
+      const audio = document.getElementById('intro-theme-audio');
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+
+        let fadeInterval = setInterval(() => {
+          if (audio.volume > 0.05) {
+            audio.volume -= 0.05;
+          } else {
+            audio.pause();
+            audio.currentTime = 0;
+            clearInterval(fadeInterval);
+          }
+        }, 40);
+
+        setTimeout(() => {
+          clearInterval(fadeInterval);
+          audio.pause();
+          audio.currentTime = 0;
+          audio.volume = 1.0;
+        }, 900);
+      }
+
+      const hero = document.getElementById('hero-screen');
+      const main = document.getElementById('main-content');
+
+      if (hero) {
+        hero.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+        hero.style.opacity = '0';
+        hero.style.transform = 'translateY(-100%)';
+        
+        setTimeout(() => {
+          hero.style.display = 'none';
+          if (main) {
+            main.classList.remove('opacity-0');
+            main.classList.add('fade-in');
+          }
+        }, 900);
+      }
+    }
+
+    function restartIntroSequence() {
+      hasEnteredWeb = false; 
+      const hero = document.getElementById('hero-screen');
+      if (hero) {
+        hero.style.display = 'flex';
+        hero.style.opacity = '1';
+        hero.style.transform = 'translateY(0)';
+      }
+      startIntroSequence();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleIntroAudio() {
+      const audio = document.getElementById('intro-theme-audio');
+      const label = document.getElementById('intro-audio-label');
+      if (!audio) return;
+
+      if (audio.paused) {
+        audio.volume = 0.55;
+        audio.play().then(() => {
+          if (label) label.innerText = 'Música GOT: Sonando';
+        }).catch(() => {
+          if (label) label.innerText = 'Clic para iniciar música';
+        });
+      } else {
+        audio.pause();
+        if (label) label.innerText = 'Música GOT: Silenciada';
+      }
+    }
+
+    function initAmbientParticles() {
+      const canvas = document.getElementById('ambient-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 50 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 2 + 0.5,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: -Math.random() * 0.8 - 0.2,
+        alpha: Math.random() * 0.6 + 0.2
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.y < 0) p.y = height;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 90, 31, ${p.alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    function initScrollReveal() {
+      const elements = document.querySelectorAll('.reveal-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      elements.forEach(el => observer.observe(el));
+    }
+
+    function speakSpeechIntro() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let utterance = new SpeechSynthesisUtterance("Good morning everyone! Good morning teacher! I am Luizabeth Contreras and this is my presentation website.");
+        utterance.lang = 'en-US';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function speakGerman() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let u = new SpeechSynthesisUtterance("Hallo, ich heiße Luizabeth.");
+        u.lang = 'de-DE';
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function speakItalian() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let u = new SpeechSynthesisUtterance("Ciao, mi chiamo Luizabeth.");
+        u.lang = 'it-IT';
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function speakRussian() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        let u = new SpeechSynthesisUtterance("Здравствуйте, меня зовут Луизабет.");
+        u.lang = 'ru-RU';
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    const termLogs = {
+      'status': `> [STATUS]: Luizabeths Studios Core Activo.
+> Fundadora: Luizabeth Contreras (4to Año B)
+> Estado: 100% Operativo y preparado para expansión tecnológica.`,
+      
+      'mission': `> [MISIÓN]:
+> Crear software e interfaces de próxima generación que potencien 
+> la creatividad y la educación en todo el mundo.`,
+      
+      'tech-stack': `> [TECNOLOGÍAS]:
+> Frontend: HTML5, CSS3, Tailwind, JavaScript, Web Audio.
+> Visión: Integración de IA y Desarrollo de Plataformas Globales.`,
+
+      'vision-2030': `> [VISIÓN 2030]:
+> Posicionar a Luizabeths Studios como una empresa referente junto a Google, Apple y NVIDIA.`,
+
+      'help': `> Comandos: status, mission, tech-stack, vision-2030, clear.`
+    };
+
+    function runCommand(cmd) {
+      const screen = document.getElementById('terminal-screen');
+      if (cmd === 'clear') {
+        screen.innerHTML = `<div class="text-stone-500">> Consola limpiada.</div>`;
+        return;
+      }
+      const resp = termLogs[cmd] || `> Comando no reconocido: "${cmd}". Usa "help" para ayuda.`;
+      const div = document.createElement('div');
+      div.className = 'pt-1 border-t border-stone-200';
+      div.innerHTML = `<span class="text-orange-600 font-bold">> ${cmd}</span><br><span class="text-stone-700 whitespace-pre-line">${resp}</span>`;
+      screen.appendChild(div);
+      screen.scrollTop = screen.scrollHeight;
+    }
+
+    function submitTermInput() {
+      const input = document.getElementById('term-input');
+      const val = input.value.trim().toLowerCase();
+      if (val) {
+        runCommand(val);
+        input.value = '';
+      }
+    }
+
+    document.getElementById('term-input')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitTermInput();
+    });
+  </script>
+</body>
+</html>
